@@ -32,5 +32,6 @@ build/
 ### VS Code ###
 .vscode/
 
-### Setup Directory ###
+### Setup Directory, log ###
 #.memo/
+*.log

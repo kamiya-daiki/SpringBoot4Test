@@ -30,6 +30,12 @@ public class CustomUserDetailsService
             throw new DisabledException("User disabled");
         }
 
+        // System.out.println("----------------------------------------");
+        // System.out.println();
+        // System.out.println("password : " + User.builder().password(user.getPassword()));
+        // System.out.println();
+        // System.out.println("----------------------------------------");
+
         return User.builder()
                 .username(user.getUsername())
                 .password(user.getPassword()) // BCrypt hash
