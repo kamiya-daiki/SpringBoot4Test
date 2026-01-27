@@ -35,3 +35,4 @@ build/
 ### Setup Directory, log ###
 #.memo/
 *.log
+*.logmvn
