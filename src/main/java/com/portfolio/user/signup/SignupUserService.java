@@ -1,6 +1,8 @@
 package com.portfolio.user.signup;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,6 +13,9 @@ import com.portfolio.user.UserRepository;
 public class SignupUserService {
 
     private final UserRepository userRepository;
+    
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public SignupUserService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -21,7 +26,9 @@ public class SignupUserService {
         
         UserEntity user = new UserEntity();
         user.setUsername(username);
-        user.setPassword(password);
+        //user.setPassword(password);
+        user.setPassword(passwordEncoder.encode(password));
+        
         this.userRepository.save(user);
 
         return ResponseEntity.ok("User created");
