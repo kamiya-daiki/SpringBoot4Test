@@ -1,5 +1,4 @@
 package com.portfolio.user.signin;
-
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,8 +9,7 @@ import com.portfolio.user.UserEntity;
 import com.portfolio.user.UserRepository;
 
 @Service
-public class CustomUserDetailsService
-        implements UserDetailsService {
+public class CustomUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
