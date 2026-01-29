@@ -1,5 +1,6 @@
 package com.portfolio.user;
 
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -7,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -19,13 +21,15 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
                     "/login",
-                    "/login-process"
+                    "/login-process",
+                    "/signup",
+                    "/signup-process"
                 ).permitAll()
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form
-                .loginPage("/login")              // 画面
-                .loginProcessingUrl("/login-process") // 認証処理
+                .loginPage("/login")
+                .loginProcessingUrl("/login-process")
                 .defaultSuccessUrl("/home", true)
                 .permitAll()
             );

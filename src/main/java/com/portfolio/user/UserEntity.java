@@ -1,6 +1,5 @@
 package com.portfolio.user;
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -56,5 +55,4 @@ public class UserEntity {
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
-
 }
