@@ -32,7 +32,8 @@ build/
 ### VS Code ###
 .vscode/
 
-### Setup Directory, log ###
-#.memo/
+### Note, log ###
 *.log
 *.logmvn
+/logs/
+/memo/

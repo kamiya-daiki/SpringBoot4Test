@@ -24,6 +24,12 @@ public class UserEntity {
     @Column(nullable = false)
     private Boolean enabled = true;
 
+    @Column(nullable = false)
+    private String create_datetime;
+
+    @Column(nullable = false)
+    private String last_login_datetime;
+
     public Long getId() {
         return id;
     }
@@ -54,5 +60,20 @@ public class UserEntity {
 
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public String getCreate_datetime() {
+        return create_datetime;
+    }
+
+    public void setCreate_datetime(String create_datetime) {
+        this.create_datetime = create_datetime;
+    }
+    public String getLast_login_datetime() {
+        return last_login_datetime;
+    }
+
+    public void setLast_login_datetime(String last_login_datetime) {
+        this.last_login_datetime = last_login_datetime;
     }
 }

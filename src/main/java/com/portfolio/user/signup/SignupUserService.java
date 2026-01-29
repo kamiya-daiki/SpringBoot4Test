@@ -26,7 +26,6 @@ public class SignupUserService {
         
         UserEntity user = new UserEntity();
         user.setUsername(username);
-        //user.setPassword(password);
         user.setPassword(passwordEncoder.encode(password));
         
         this.userRepository.save(user);
