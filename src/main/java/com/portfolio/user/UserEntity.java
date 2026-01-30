@@ -1,6 +1,6 @@
 package com.portfolio.user;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,11 +25,11 @@ public class UserEntity {
     @Column(nullable = false)
     private Boolean enabled = true;
 
-    @Column(nullable = false)
-    private LocalDateTime create_datetime;
+    @Column(name = "create_datetime")
+    private Instant createDatetime;
 
-    @Column(nullable = false)
-    private LocalDateTime last_login_datetime;
+    @Column(name = "last_login_datetime")
+    private Instant lastLoginDatetime;
 
     public Long getId() {
         return id;
@@ -45,6 +45,14 @@ public class UserEntity {
 
     public Boolean getEnabled() {
         return enabled;
+    }
+
+    public Instant getCreateDatetime() {
+        return createDatetime;
+    }
+
+    public Instant getLastLoginDatetime() {
+        return lastLoginDatetime;
     }
 
     public void setId(Long id) {
@@ -63,18 +71,11 @@ public class UserEntity {
         this.enabled = enabled;
     }
 
-    public LocalDateTime getCreate_datetime() {
-        return create_datetime;
+    public void setCreateDatetime(Instant createDatetime) {
+        this.createDatetime = createDatetime;
     }
 
-    public void setCreate_datetime(LocalDateTime create_datetime) {
-        this.create_datetime = create_datetime;
-    }
-    public LocalDateTime getLast_login_datetime() {
-        return last_login_datetime;
-    }
-
-    public void setLast_login_datetime(LocalDateTime last_login_datetime) {
-        this.last_login_datetime = last_login_datetime;
+    public void setLastLoginDatetime(Instant lastLoginDatetime) {
+        this.lastLoginDatetime = lastLoginDatetime;
     }
 }

@@ -1,7 +1,7 @@
 package com.portfolio.user.signin;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
+import java.time.Instant;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
@@ -29,7 +29,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         String username = authentication.getName();
 
         userRepository.updateLastLoginDatetime(
-            username, LocalDateTime.now());
+            username, Instant.now());
 
         response.sendRedirect("/user/home");
     }
