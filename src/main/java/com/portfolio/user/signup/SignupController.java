@@ -13,12 +13,13 @@ public class SignupController {
         this.signupUserService = signupUserService;
     }
 
-    @PostMapping("/signup-process")
+    @PostMapping("/signup")
     public String signup(
             @RequestParam String username,
             @RequestParam String password
     ) {
         signupUserService.createUser(username, password);
-        return "redirect:/login";
+
+        return "/index";
     }
 }

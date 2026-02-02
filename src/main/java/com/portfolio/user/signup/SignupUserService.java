@@ -1,5 +1,6 @@
 package com.portfolio.user.signup;
 
+import java.time.Instant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,12 +22,14 @@ public class SignupUserService {
         this.userRepository = userRepository;
     }
 
-    @PostMapping("/signup-process")
+    @PostMapping("/signup")
     public ResponseEntity<String> createUser(@RequestParam String username, @RequestParam String password) {
         
         UserEntity user = new UserEntity();
         user.setUsername(username);
         user.setPassword(passwordEncoder.encode(password));
+        user.setCreateDatetime(Instant.now());
+        user.setEnabled(true);
         
         this.userRepository.save(user);
 
