@@ -18,25 +18,36 @@ public class SecurityConfig {
     @Autowired
     private LoginSuccessHandler loginSuccessHandler;
 
+    public SecurityConfig(LoginSuccessHandler loginSuccessHandler) {
+        this.loginSuccessHandler = loginSuccessHandler;
+    }
+
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http
+            // CSRF(クロスサイトリクエストフォージェリ)保護
             .csrf(csrf -> csrf.disable())
+
+            // 認可設定
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
+                    "/",
+                    "/index",
                     "/login",
-                    "/login-process",
-                    "/signup",
-                    "/signup-process"
-                ).permitAll()
-                .anyRequest().authenticated()
+                    "/signup"
+                    // "/css/**",
+                    // "/js/**",
+                    // "/images/**"
+                )
+                .permitAll()
+                .anyRequest()
+                .authenticated()
             )
+            // フォームログイン設定
             .formLogin(form -> form
                 .loginPage("/login")
                 .successHandler(loginSuccessHandler)
-                .loginProcessingUrl("/login-process")
-                .defaultSuccessUrl("/home", true)
                 .permitAll()
             );
 

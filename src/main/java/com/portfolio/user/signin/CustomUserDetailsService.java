@@ -1,4 +1,5 @@
 package com.portfolio.user.signin;
+import java.time.Instant;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -32,8 +33,21 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         return User.builder()
                 .username(user.getUsername())
-                .password(user.getPassword()) // BCrypt hash
+                .password(user.getPassword())
                 .roles("USER")
                 .build();
+    }
+
+    public void updateLastLogin(String username, Instant lastLogin) {
+
+        UserEntity user = userRepository
+                .findByUsername(username)
+                .orElseThrow(() ->
+                    new UsernameNotFoundException("User not found"));
+
+        if (user != null) {
+            user.setLastLoginDatetime(lastLogin);
+            userRepository.save(user);
+        }
     }
 }

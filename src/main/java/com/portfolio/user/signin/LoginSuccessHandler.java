@@ -26,12 +26,10 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
             HttpServletResponse response,
             Authentication authentication) throws IOException {
 
-        String username = authentication.getName();
 
-        userRepository.updateLastLoginDatetime(
-            username, Instant.now());
+        userRepository.updateLastLoginDatetime(authentication.getName(), Instant.now());
 
-        response.sendRedirect("/user/home");
+        response.sendRedirect(request.getContextPath() + "/user/home");
     }
 }
 
