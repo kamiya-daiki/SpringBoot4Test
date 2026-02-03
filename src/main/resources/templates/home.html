@@ -13,5 +13,11 @@
             <button type="submit">ログアウト</button>
         </form>
     </p>
-    <a href='/delete'>Delete</a>
+    
+    </p>
+        <!-- CSRF保護のためPOST -->
+        <form th:action="@{/delete/${user.id}}" method="post">
+            <button type="submit">アカウント削除</button>
+        </form>
+    </p>
 </html>
