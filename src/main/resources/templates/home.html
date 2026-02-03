@@ -6,4 +6,17 @@
     <body>
         <h1>Welcome!</h1>
     </body>
+
+    </p>
+        <!-- CSRF保護のためPOST -->
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">ログアウト</button>
+        </form>
+    </p>
+    
+    </p>
+        <form th:action="@{/delete}" method="post">
+            <button type="submit">アカウント削除</button>
+        </form> 
+    </p>
 </html>

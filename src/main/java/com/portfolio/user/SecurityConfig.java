@@ -1,6 +1,5 @@
 package com.portfolio.user;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import com.portfolio.user.signin.LoginSuccessHandler;
+import com.portfolio.user.login.LoginSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -29,9 +28,9 @@ public class SecurityConfig {
             // CSRF(クロスサイトリクエストフォージェリ)保護
             .csrf(csrf -> csrf.disable())
 
-            // 認可設定
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
+                    // 認可が不要なページ
                     "/",
                     "/index",
                     "/login",
@@ -42,12 +41,21 @@ public class SecurityConfig {
                 )
                 .permitAll()
                 .anyRequest()
+                // その他のページは全て認可が必要
                 .authenticated()
             )
             // フォームログイン設定
             .formLogin(form -> form
                 .loginPage("/login")
                 .successHandler(loginSuccessHandler)
+                .permitAll()
+            )
+            // ログアウト設定
+            .logout(logout -> logout
+                .logoutUrl("/logout") // ログアウト用エンドポイント
+                .logoutSuccessUrl("/") // 成功後の遷移先
+                .invalidateHttpSession(true) // セッションの無効化
+                .deleteCookies("JSESSIONID") // クッキーの削除
                 .permitAll()
             );
 
