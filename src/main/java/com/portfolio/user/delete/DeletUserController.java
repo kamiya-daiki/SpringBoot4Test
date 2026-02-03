@@ -1,21 +1,23 @@
 package com.portfolio.user.delete;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import com.portfolio.user.UserService;
 
 @Controller
 public class DeletUserController {
 
-    private final DeleteUserService deleteUserService;
+    private final UserService userService;
 
-    public DeletUserController(DeleteUserService deleteUserService) {
-        this.deleteUserService = deleteUserService;
+    public DeletUserController(UserService userService) {
+        this.userService = userService;
     }
 
     @PostMapping("/delete")
-    public String delete(@PathVariable long id) {
-        deleteUserService.deleteUser(id);
-        return "/";
+    public String deleteUser(@AuthenticationPrincipal UserDetails userDetails) {
+        userService.deleteUserByName(userDetails.getUsername());
+        return "redirect:/logout";
     }
 }
