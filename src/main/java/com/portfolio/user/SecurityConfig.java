@@ -28,9 +28,9 @@ public class SecurityConfig {
             // CSRF(クロスサイトリクエストフォージェリ)保護
             .csrf(csrf -> csrf.disable())
 
-            // 認可設定
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
+                    // 認可が不要なページ
                     "/",
                     "/index",
                     "/login",
@@ -41,6 +41,7 @@ public class SecurityConfig {
                 )
                 .permitAll()
                 .anyRequest()
+                // その他のページは全て認可が必要
                 .authenticated()
             )
             // フォームログイン設定

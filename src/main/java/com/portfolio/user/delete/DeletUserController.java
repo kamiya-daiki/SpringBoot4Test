@@ -13,9 +13,9 @@ public class DeletUserController {
         this.deleteUserService = deleteUserService;
     }
 
-    @PostMapping("/delete/{id}")
+    @PostMapping("/delete")
     public String delete(@PathVariable long id) {
         deleteUserService.deleteUser(id);
-        return "/home";
+        return "/";
     }
 }

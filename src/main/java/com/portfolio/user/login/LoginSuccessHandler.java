@@ -28,7 +28,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
         userRepository.updateLastLoginDatetime(authentication.getName(), Instant.now());
 
-        response.sendRedirect(request.getContextPath() + "/user/home");
+        response.sendRedirect(request.getContextPath() + "/home");
     }
 }
 

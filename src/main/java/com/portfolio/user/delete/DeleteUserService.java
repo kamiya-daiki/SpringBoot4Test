@@ -14,7 +14,7 @@ public class DeleteUserService {
         this.userRepository = userRepository;
     }
 
-    @PostMapping("/delete/{id}")
+    @PostMapping("/delete")
     public ResponseEntity<String> deleteUser(Long id) {
         
         userRepository.deleteById(id);
