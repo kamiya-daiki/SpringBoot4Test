@@ -1,5 +1,7 @@
-package com.portfolio.user.signin;
+package com.portfolio.user.login;
 import java.time.Instant;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +15,8 @@ import com.portfolio.user.UserRepository;
 public class CustomUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
+    private static final Logger log =
+        LoggerFactory.getLogger(UserRepository.class);
 
     public CustomUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -22,10 +26,15 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
 
+                
+        log.info("User: {"+ username +"} check");
+
         UserEntity user = userRepository
                 .findByUsername(username)
                 .orElseThrow(() ->
                     new UsernameNotFoundException("User not found"));
+
+        log.info("User: {"+ username +"} found");
 
         if (!Boolean.TRUE.equals(user.getEnabled())) {
             throw new DisabledException("User disabled");

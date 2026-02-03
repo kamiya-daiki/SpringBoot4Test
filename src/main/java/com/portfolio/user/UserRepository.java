@@ -11,6 +11,7 @@ public interface UserRepository
         extends JpaRepository<UserEntity, Long> {
 
     Optional<UserEntity> findByUsername(String username);
+    Optional<UserEntity> deleteById(long id);
 
     @Modifying
     @Query("UPDATE UserEntity u SET u.lastLoginDatetime = :dt WHERE u.username = :username")

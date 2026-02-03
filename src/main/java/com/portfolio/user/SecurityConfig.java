@@ -1,6 +1,5 @@
 package com.portfolio.user;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import com.portfolio.user.signin.LoginSuccessHandler;
+import com.portfolio.user.login.LoginSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -48,6 +47,14 @@ public class SecurityConfig {
             .formLogin(form -> form
                 .loginPage("/login")
                 .successHandler(loginSuccessHandler)
+                .permitAll()
+            )
+            // ログアウト設定
+            .logout(logout -> logout
+                .logoutUrl("/logout") // ログアウト用エンドポイント
+                .logoutSuccessUrl("/") // 成功後の遷移先
+                .invalidateHttpSession(true) // セッションの無効化
+                .deleteCookies("JSESSIONID") // クッキーの削除
                 .permitAll()
             );
 

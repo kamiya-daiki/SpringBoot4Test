@@ -1,4 +1,4 @@
-package com.portfolio.user.signin;
+package com.portfolio.user.login;
 
 import java.io.IOException;
 import java.time.Instant;
@@ -25,7 +25,6 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
             HttpServletRequest request,
             HttpServletResponse response,
             Authentication authentication) throws IOException {
-
 
         userRepository.updateLastLoginDatetime(authentication.getName(), Instant.now());
 
