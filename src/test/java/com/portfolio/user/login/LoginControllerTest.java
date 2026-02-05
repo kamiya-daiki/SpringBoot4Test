@@ -22,12 +22,9 @@ public class LoginControllerTest {
                .andExpect(status().isOk());
     }
 
-    // @Autowired
-    // MockMvc mockMvc;
-
-    // @Test
-    // void login画面が表示される() throws Exception {
-    //     mockMvc.perform(get("/login"))
-    //            .andExpect(status().isOk());
-    // }
+    @Test
+    void login画面が表示される() throws Exception {
+        mockMvc.perform(get("/login"))
+               .andExpect(status().isOk());
+    }
 }
