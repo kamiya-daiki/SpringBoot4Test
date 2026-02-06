@@ -1,6 +1,5 @@
-package com.portfolio.user.login;
+package com.portfolio.user.signin;
 
-//import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -11,7 +10,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class LoginControllerTest {
+public class SigninControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -21,10 +20,4 @@ public class LoginControllerTest {
         mockMvc.perform(get("/"))
                .andExpect(status().isOk());
     }
-
-    // @Test
-    // void login画面が表示される() throws Exception {
-    //     mockMvc.perform(get("/login"))
-    //            .andExpect(status().isOk());
-    // }
 }

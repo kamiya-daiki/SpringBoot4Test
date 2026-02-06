@@ -8,17 +8,17 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import com.portfolio.user.login.LoginSuccessHandler;
+import com.portfolio.user.signin.SigninSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
     
     @Autowired
-    private LoginSuccessHandler loginSuccessHandler;
+    private SigninSuccessHandler signinSuccessHandler;
 
-    public SecurityConfig(LoginSuccessHandler loginSuccessHandler) {
-        this.loginSuccessHandler = loginSuccessHandler;
+    public SecurityConfig(SigninSuccessHandler signinSuccessHandler) {
+        this.signinSuccessHandler = signinSuccessHandler;
     }
 
     @Bean
@@ -33,7 +33,8 @@ public class SecurityConfig {
                     // 認可が不要なページ
                     "/",
                     "/index",
-                    "/login",
+                    "/index.html",
+                    "/signin",
                     "/signup"
                     // "/css/**",
                     // "/js/**",
@@ -46,8 +47,8 @@ public class SecurityConfig {
             )
             // フォームログイン設定
             .formLogin(form -> form
-                .loginPage("/login")
-                .successHandler(loginSuccessHandler)
+                .loginPage("/signin")
+                .successHandler(signinSuccessHandler)
                 .permitAll()
             )
             // ログアウト設定
