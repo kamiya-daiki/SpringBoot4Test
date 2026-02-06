@@ -1,4 +1,4 @@
-package com.portfolio.user.signin;
+package com.portfolio.user.index;
 
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -10,7 +10,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class SigninControllerTest {
+public class IndexControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
