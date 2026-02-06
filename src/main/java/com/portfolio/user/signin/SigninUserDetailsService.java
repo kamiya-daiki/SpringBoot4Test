@@ -1,4 +1,4 @@
-package com.portfolio.user.login;
+package com.portfolio.user.signin;
 import java.time.Instant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,13 +12,13 @@ import com.portfolio.user.UserEntity;
 import com.portfolio.user.UserRepository;
 
 @Service
-public class CustomUserDetailsService implements UserDetailsService {
+public class SigninUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
     private static final Logger log =
         LoggerFactory.getLogger(UserRepository.class);
 
-    public CustomUserDetailsService(UserRepository userRepository) {
+    public SigninUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -26,18 +26,17 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
 
-                
         log.info("User: {"+ username +"} check");
 
         UserEntity user = userRepository
                 .findByUsername(username)
                 .orElseThrow(() ->
-                    new UsernameNotFoundException("User not found"));
+                    new UsernameNotFoundException("User or Password disabled"));
 
         log.info("User: {"+ username +"} found");
 
         if (!Boolean.TRUE.equals(user.getEnabled())) {
-            throw new DisabledException("User disabled");
+            throw new DisabledException("User or Password disabled");
         }
 
         return User.builder()

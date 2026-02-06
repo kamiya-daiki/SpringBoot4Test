@@ -1,4 +1,4 @@
-package com.portfolio.user.login;
+package com.portfolio.user.signin;
 
 import java.io.IOException;
 import java.time.Instant;
@@ -11,11 +11,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.transaction.Transactional;
 
 @Component
-public class LoginSuccessHandler implements AuthenticationSuccessHandler {
+public class SigninSuccessHandler implements AuthenticationSuccessHandler {
 
     private final UserRepository userRepository;
 
-    public LoginSuccessHandler(UserRepository userRepository) {
+    public SigninSuccessHandler(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
