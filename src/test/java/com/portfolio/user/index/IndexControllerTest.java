@@ -16,7 +16,7 @@ public class IndexControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    void testIndex() throws Exception {
+    void IndexTest0001() throws Exception {
         mockMvc.perform(get("/"))
                .andExpect(status().isOk());
     }

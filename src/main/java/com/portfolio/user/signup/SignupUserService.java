@@ -23,7 +23,7 @@ public class SignupUserService {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<String> createUser(@RequestParam String username, @RequestParam String password) {
+    public ResponseEntity<String> createUser(@RequestParam String username, @RequestParam String password) throws Exception{
         
         UserEntity user = new UserEntity();
         user.setUsername(username);
