@@ -50,7 +50,7 @@ public class SecurityConfig {
             // フォームログイン設定
             .formLogin(form -> form
                 .loginPage("/signin")
-                .loginProcessingUrl("/signin")
+                .loginProcessingUrl("/signin-process")
                 .failureUrl("/index?message_signin=failed_to_signin")
                 .successHandler(signinSuccessHandler)
                 .permitAll()
