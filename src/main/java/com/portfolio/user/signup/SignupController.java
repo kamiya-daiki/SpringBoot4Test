@@ -18,7 +18,16 @@ public class SignupController {
             @RequestParam String username,
             @RequestParam String password
     ) {
-        signupUserService.createUser(username, password);
+        try
+        {
+            signupUserService.createUser(username, password);
+        } 
+        catch (Exception e) 
+        {
+            System.out.println(e.getMessage());
+            System.out.println("return : /index?message_signup=Error_creating_user");
+            return "/index?message_signup=Error_creating_user";
+        }
 
         return "/index";
     }

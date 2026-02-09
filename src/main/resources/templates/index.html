@@ -1,14 +1,26 @@
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Portfolio App</title>
+  </head>
 <h2>Welcome to the Portfolio App</h2>
 <p>
 Sign in
+<br>
+<h2 th:text="${message_signin}"></h2>
+<br>
 <form method="post" action="/signin">
   <input name="username"/>
   <input type="password" name="password"/>
   <button type="submit">Sign in</button>
 </form>
 Sign up
+<br>
+<h2 th:text="${message_signup}"></h2>
+<br>
 <form method="post" action="/signup">
   <input name="username"/>
   <input type="password" name="password"/>
   <button type="submit">Sign up</button>
 </form>
+</p>
+</html>
