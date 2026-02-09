@@ -3,6 +3,7 @@ package com.portfolio.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -11,6 +12,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import com.portfolio.user.signin.SigninSuccessHandler;
 
 @Configuration
+@Profile("demo")
 @EnableWebSecurity
 public class SecurityConfig {
     
@@ -29,16 +31,19 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
 
             .authorizeHttpRequests(auth -> auth
+                // 認可が不要なページ
                 .requestMatchers(
-                    // 認可が不要なページ
                     "/",
                     "/index",
-                    "/index.html",
+                    "/boot",
                     "/signin",
-                    "/signup"
-                    // "/css/**",
-                    // "/js/**",
-                    // "/images/**"
+                    "/signup",
+                    "/css/**",
+                    "/js/**",
+                    "/images/**",
+                    "/dist/css/**",
+                    "/dist/js/**",
+                    "/brand/**"
                 )
                 .permitAll()
                 .anyRequest()
@@ -48,16 +53,21 @@ public class SecurityConfig {
             // フォームログイン設定
             .formLogin(form -> form
                 .loginPage("/signin")
+                .loginProcessingUrl("/signin")
                 .failureUrl("/index?message_signin=failed_to_signin")
                 .successHandler(signinSuccessHandler)
                 .permitAll()
             )
             // ログアウト設定
             .logout(logout -> logout
-                .logoutUrl("/logout") // ログアウト用エンドポイント
-                .logoutSuccessUrl("/") // 成功後の遷移先
-                .invalidateHttpSession(true) // セッションの無効化
-                .deleteCookies("JSESSIONID") // クッキーの削除
+                // ログアウト用エンドポイント
+                .logoutUrl("/logout")
+                // 成功後の遷移先
+                .logoutSuccessUrl("/")
+                // セッションの無効化
+                .invalidateHttpSession(true)
+                // クッキーの削除
+                .deleteCookies("JSESSIONID")
                 .permitAll()
             );
 
