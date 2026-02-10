@@ -13,20 +13,20 @@ public class UserService {
     }
 
     @Transactional
-    public void deleteUserById(String username) {
+    public void deleteUserById(String email) {
 
         UserEntity user = userRepository
-            .findByUsername(username)
+            .findByEmail(email)
             .orElseThrow(() -> new IllegalStateException("User not found"));
 
         userRepository.deleteById(user.getId());
     }
 
     @Transactional
-    public void deleteUserByName(String username) {
+    public void deleteUserByEmail(String email) {
 
         UserEntity user = userRepository
-            .findByUsername(username)
+            .findByEmail(email)
             .orElseThrow(() -> new IllegalStateException("User not found"));
 
         userRepository.delete(user);

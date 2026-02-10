@@ -17,7 +17,7 @@ public class DeletUserController {
 
     @PostMapping("/delete")
     public String deleteUser(@AuthenticationPrincipal UserDetails userDetails) {
-        userService.deleteUserByName(userDetails.getUsername());
+        userService.deleteUserByEmail(userDetails.getUsername());
         return "redirect:/logout";
     }
 }

@@ -1,26 +1,65 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<!-- <!doctype html> -->
+<html data-bs-theme="auto" xmlns:th="http://www.thymeleaf.org">
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
     <title>Portfolio App</title>
   </head>
-<h2>Welcome to the Portfolio App</h2>
-<p>
-Sign in
-<br>
-<h2 th:text="${message_signin}"></h2>
-<br>
-<form method="post" action="/signin">
-  <input name="username"/>
-  <input type="password" name="password"/>
-  <button type="submit">Sign in</button>
-</form>
-Sign up
-<br>
-<h2 th:text="${message_signup}"></h2>
-<br>
-<form method="post" action="/signup">
-  <input name="username"/>
-  <input type="password" name="password"/>
-  <button type="submit">Sign up</button>
-</form>
-</p>
+  <body class="d-flex align-items-center py-4 bg-body-tertiary">
+    <!-- →<h2 th:text="${message_error}">エラーメッセージ</h2>←<p>  -->
+    <main class="form-signin w-100 m-auto">
+      <form method="post" action="/signin-process">
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+        <div class="form-floating">
+          <input
+            type="email"
+            class="form-control"
+            name="username"
+            placeholder="name@example.com"
+          />
+          <label for="username">Email address</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            placeholder="Password"
+          />
+          <label for="password">Password</label>
+        </div>
+        <button class="btn btn-primary w-100 py-2" type="submit">
+          Sign in
+        </button>
+      </form>
+    </main>
+    </p>
+    <main class="form-signup w-100 m-auto">
+      <form method="post" action="/signup">
+        <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
+        <div class="form-floating">
+          <input
+            type="email"
+            class="form-control"
+            name="username"
+            placeholder="name@example.com"
+          />
+          <label for="username">Email address</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            placeholder="Password"
+          />
+          <label for="password">Password</label>
+        </div>
+        <button class="btn btn-primary w-100 py-2" type="submit">
+          Sign up
+        </button>
+      </form>
+    </main>
+  </body>
 </html>

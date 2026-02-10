@@ -27,37 +27,39 @@ public class SecurityConfig {
         http
             // CSRF(クロスサイトリクエストフォージェリ)保護
             .csrf(csrf -> csrf.disable())
-
             .authorizeHttpRequests(auth -> auth
+                // 認可が不要なページ
                 .requestMatchers(
-                    // 認可が不要なページ
                     "/",
                     "/index",
                     "/index.html",
                     "/signin",
-                    "/signup"
-                    // "/css/**",
-                    // "/js/**",
-                    // "/images/**"
-                )
-                .permitAll()
-                .anyRequest()
+                    "/signin-process",
+                    "/signup",
+                    "/css/**",
+                    "/js/**"
+                ).permitAll()
                 // その他のページは全て認可が必要
-                .authenticated()
+                .anyRequest().authenticated()
             )
             // フォームログイン設定
             .formLogin(form -> form
-                .loginPage("/signin")
-                .failureUrl("/index?message_signin=failed_to_signin")
+                .loginPage("/signin")                   // 画面表示
+                .loginProcessingUrl("/signin-process")  // 認証処理
+                .failureUrl("/index?message_error=failed_to_signin")
                 .successHandler(signinSuccessHandler)
                 .permitAll()
             )
             // ログアウト設定
             .logout(logout -> logout
-                .logoutUrl("/logout") // ログアウト用エンドポイント
-                .logoutSuccessUrl("/") // 成功後の遷移先
-                .invalidateHttpSession(true) // セッションの無効化
-                .deleteCookies("JSESSIONID") // クッキーの削除
+                // ログアウト用エンドポイント
+                .logoutUrl("/logout")
+                // 成功後の遷移先
+                .logoutSuccessUrl("/")
+                // セッションの無効化
+                .invalidateHttpSession(true)
+                // クッキーの削除
+                .deleteCookies("JSESSIONID")
                 .permitAll()
             );
 

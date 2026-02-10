@@ -20,12 +20,13 @@ public class SignupController {
     ) {
         try
         {
+            System.out.println("SignupController: signup called start : username=" + username);
             signupUserService.createUser(username, password);
+            System.out.println("SignupController: signup called end : username=" + username);
         } 
         catch (Exception e) 
         {
-            System.out.println(e.getMessage());
-            System.out.println("return : /index?message_signup=Error_creating_user");
+            // return "/index";
             return "/index?message_signup=Error_creating_user";
         }
 
