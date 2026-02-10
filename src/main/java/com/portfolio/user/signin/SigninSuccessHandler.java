@@ -26,7 +26,9 @@ public class SigninSuccessHandler implements AuthenticationSuccessHandler {
             HttpServletResponse response,
             Authentication authentication) throws IOException {
 
+        System.out.println("SigninSuccessHandler: start");
         userRepository.updateLastLoginDatetime(authentication.getName(), Instant.now());
+        System.out.println("SigninSuccessHandler: end");
 
         response.sendRedirect(request.getContextPath() + "/home");
     }

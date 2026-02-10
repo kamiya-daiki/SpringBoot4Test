@@ -35,19 +35,19 @@ public class SecurityConfig {
                     "/index.html",
                     "/signin",
                     "/signin-process",
+                    "/signup",
+                    "/signup-process",
                     "/css/**",
-                    "/js/**",
-                    "/images/**",
-                    "/favicon.ico"
+                    "/js/**"
                 ).permitAll()
                 // その他のページは全て認可が必要
                 .anyRequest().authenticated()
             )
             // フォームログイン設定
             .formLogin(form -> form
-                .loginPage("/signin")
-                .loginProcessingUrl("/signin-process")
-                .failureUrl("/index?message_signin=failed_to_signin")
+                .loginPage("/signin")                   // 画面表示
+                .loginProcessingUrl("/signin-process")  // 認証処理
+                .failureUrl("/index?message_error=failed_to_signin")
                 .successHandler(signinSuccessHandler)
                 .permitAll()
             )

@@ -46,10 +46,10 @@ public class SigninUserDetailsService implements UserDetailsService {
                 .build();
     }
 
-    public void updateLastLogin(String username, Instant lastLogin) {
+    public void updateLastLogin(String email, Instant lastLogin) {
 
         UserEntity user = userRepository
-                .findByEmail(username)
+                .findByEmail(email)
                 .orElseThrow(() ->
                     new UsernameNotFoundException("User not found"));
 
