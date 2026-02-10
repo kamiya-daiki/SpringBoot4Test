@@ -15,12 +15,12 @@ public class SignupController {
 
     @PostMapping("/signup")
     public String signup(
-            @RequestParam String username,
+            @RequestParam String email,
             @RequestParam String password
     ) {
         try
         {
-            signupUserService.createUser(username, password);
+            signupUserService.createUser(email, password);
         } 
         catch (Exception e) 
         {

@@ -27,25 +27,21 @@ public class SecurityConfig {
         http
             // CSRF(クロスサイトリクエストフォージェリ)保護
             .csrf(csrf -> csrf.disable())
-
             .authorizeHttpRequests(auth -> auth
                 // 認可が不要なページ
                 .requestMatchers(
                     "/",
                     "/index",
+                    "/index.html",
                     "/signin",
-                    "/signup",
+                    "/signin-process",
                     "/css/**",
                     "/js/**",
                     "/images/**",
-                    "/dist/css/**",
-                    "/dist/js/**",
-                    "/brand/**"
-                )
-                .permitAll()
-                .anyRequest()
+                    "/favicon.ico"
+                ).permitAll()
                 // その他のページは全て認可が必要
-                .authenticated()
+                .anyRequest().authenticated()
             )
             // フォームログイン設定
             .formLogin(form -> form

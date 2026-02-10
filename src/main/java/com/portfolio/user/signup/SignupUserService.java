@@ -23,10 +23,10 @@ public class SignupUserService {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<String> createUser(@RequestParam String username, @RequestParam String password) throws Exception{
+    public ResponseEntity<String> createUser(@RequestParam String email, @RequestParam String password) throws Exception{
         
         UserEntity user = new UserEntity();
-        user.setUsername(username);
+        user.setEmail(email);
         user.setPassword(passwordEncoder.encode(password));
         user.setCreateDatetime(Instant.now());
         user.setEnabled(true);

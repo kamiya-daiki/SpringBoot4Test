@@ -10,7 +10,7 @@ public class HomeController {
 
     @GetMapping("/home")
     public String home(Model model, Authentication authentication) {
-        model.addAttribute("username", authentication.getName());
+        model.addAttribute("email", authentication.getName());
         return "home";
     }
 

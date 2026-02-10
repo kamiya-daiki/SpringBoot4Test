@@ -23,24 +23,24 @@ public class SigninUserDetailsService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username)
+    public UserDetails loadUserByUsername(String email)
             throws UsernameNotFoundException {
 
-        log.info("User: {"+ username +"} check");
+        log.info("User: {"+ email +"} check");
 
         UserEntity user = userRepository
-                .findByUsername(username)
+                .findByEmail(email)
                 .orElseThrow(() ->
                     new UsernameNotFoundException("User or Password disabled"));
 
-        log.info("User: {"+ username +"} found");
+        log.info("User: {"+ email +"} found");
 
         if (!Boolean.TRUE.equals(user.getEnabled())) {
             throw new DisabledException("User or Password disabled");
         }
 
         return User.builder()
-                .username(user.getUsername())
+                .username(user.getEmail())
                 .password(user.getPassword())
                 .roles("USER")
                 .build();
@@ -49,7 +49,7 @@ public class SigninUserDetailsService implements UserDetailsService {
     public void updateLastLogin(String username, Instant lastLogin) {
 
         UserEntity user = userRepository
-                .findByUsername(username)
+                .findByEmail(username)
                 .orElseThrow(() ->
                     new UsernameNotFoundException("User not found"));
 

@@ -10,13 +10,13 @@ import org.springframework.data.repository.query.Param;
 public interface UserRepository
         extends JpaRepository<UserEntity, Long> {
 
-    Optional<UserEntity> findByUsername(String username);
+    Optional<UserEntity> findByEmail(String email);
     Optional<UserEntity> deleteById(long id);
 
     @Modifying
-    @Query("UPDATE UserEntity u SET u.lastLoginDatetime = :dt WHERE u.username = :username")
+    @Query("UPDATE UserEntity u SET u.lastLoginDatetime = :dt WHERE u.email = :email")
     int updateLastLoginDatetime(
-        @Param("username") String username,
+        @Param("email") String email,
         @Param("dt") Instant dt
     );
 }
