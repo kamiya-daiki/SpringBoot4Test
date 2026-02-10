@@ -23,15 +23,17 @@ public class SignupUserService {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<String> createUser(@RequestParam String email, @RequestParam String password) throws Exception{
+    public ResponseEntity<String> createUser(@RequestParam String username, @RequestParam String password) throws Exception{
         
+        System.out.println("SignupUserService: createUser called start : username=" + username);
         UserEntity user = new UserEntity();
-        user.setEmail(email);
+        user.setEmail(username);
         user.setPassword(passwordEncoder.encode(password));
         user.setCreateDatetime(Instant.now());
         user.setEnabled(true);
         
         this.userRepository.save(user);
+        System.out.println("SignupUserService: createUser called end : username=" + username);
 
         return ResponseEntity.ok("User created");
     }

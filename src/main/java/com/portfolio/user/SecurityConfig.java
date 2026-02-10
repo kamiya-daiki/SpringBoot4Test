@@ -36,7 +36,6 @@ public class SecurityConfig {
                     "/signin",
                     "/signin-process",
                     "/signup",
-                    "/signup-process",
                     "/css/**",
                     "/js/**"
                 ).permitAll()
