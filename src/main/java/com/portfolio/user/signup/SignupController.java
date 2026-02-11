@@ -27,7 +27,7 @@ public class SignupController {
         catch (Exception e) 
         {
             // return "/index";
-            return "/index?message_signup=Error_creating_user";
+            return "/index?error_signup=Error_creating_user";
         }
 
         return "/index";

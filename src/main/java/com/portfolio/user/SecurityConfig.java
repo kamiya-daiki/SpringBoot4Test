@@ -37,21 +37,24 @@ public class SecurityConfig {
                     "/",
                     "/index",
                     "/index.html",
+                    "/index.css",
                     "/signin",
                     "/signup",
                     "/css/**",
-                    "/js/**"
+                    "/js/**",
+                    "/bootstrap/**",
+                    "/bootstrap-examples/**"
                 ).permitAll()
                 // その他のページは全て認可が必要
                 .anyRequest().authenticated()
             )
             // フォームログイン設定
             .formLogin(form -> form
-                .loginPage("/index")            // 画面表示
-                .loginProcessingUrl("/signin")    // 認証処理
+                .loginPage("/")                // 画面表示
+                .loginProcessingUrl("/signin")      // 認証処理
                 .failureHandler((request, response, exception) -> {
                     response.sendRedirect("/index?error_signin=" + 
-                        URLEncoder.encode("failed_to_signin_re", StandardCharsets.UTF_8));
+                        URLEncoder.encode("failed_to_signin", StandardCharsets.UTF_8));
                 })
                 .successHandler(signinSuccessHandler)
                 .permitAll()
