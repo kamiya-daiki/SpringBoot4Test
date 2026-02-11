@@ -1,10 +1,13 @@
 <!DOCTYPE html>
+
+<!-- Bootstrapのカラーモード定義、thymeleaf使用を明示 -->
 <html lang="jp" data-bs-theme="auto" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="" />
     <title>Portfolio App</title>
+
+    <!-- ビューポート設定(スマートフォンなどのレイアウト定義) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- static bootstrap-5.3.8-examples -->
     <script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}" class="astro-vvvwv3sm"></script>
@@ -88,6 +91,8 @@
         display: block !important;
       }
     </style>
+
+    <!-- ナイトモード描画定義 -->
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
       <symbol id="check2" viewBox="0 0 16 16">
         <path
@@ -114,7 +119,10 @@
       </symbol>
     </svg>
   </head>
+
   <body class="d-flex align-items-center py-4 bg-body-tertiary">
+
+    <!-- サインイン -->
     <form method="post" action="/signin">
       <main class="form-signin w-100 m-auto">
         <h2 th:text="${param.error_signin}">エラーメッセージ</h2>
@@ -144,6 +152,8 @@
         </button>
       </main>
     </form>
+
+    <!-- サインアップ -->
     <form method="post" action="/signup">
       <main class="form-signin w-100 m-auto">
         <h2 th:text="${param.message_signup}">メッセージ</h2>
@@ -175,8 +185,7 @@
       </main>
     </form>
     
-
-
+    <!-- 右下ナイトモード部分描画 -->
     <div
       class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle"
     >
