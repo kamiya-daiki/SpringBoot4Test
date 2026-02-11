@@ -16,7 +16,7 @@
 
     <!-- bootstrap-5.3.8-examples sign-in -->
     <script th:src="@{/bootstrap-examples/js/color-modes.js}"></script>
-    <link th:href="@{/bootstrap-examples/css/sign-in.css}" rel="stylesheet" />
+    <link th:href="@{/bootstrap-examples/css/index.css}" rel="stylesheet" />
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -91,6 +91,9 @@
         display: block !important;
       }
     </style>
+  </head>
+
+  <body class="d-flex align-items-center py-4 bg-body-tertiary">
 
     <!-- ナイトモード描画定義 -->
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -118,74 +121,6 @@
         ></path>
       </symbol>
     </svg>
-  </head>
-
-  <body class="d-flex align-items-center py-4 bg-body-tertiary">
-
-    <!-- サインイン -->
-    <form method="post" action="/signin">
-      <main class="form-signin w-100 m-auto">
-        <h2 th:text="${param.error_signin}">エラーメッセージ</h2>
-        <h1 class="h3 mb-3 fw-normal">Please Sign In</h1>
-        <div class="form-floating">
-          <input
-            type="email"
-            class="form-control"
-            id="floatingInput"
-            placeholder="name@example.com"
-            name="username"
-          />
-          <label for="floatingInput">Email address</label>
-        </div>
-        <div class="form-floating">
-          <input
-            type="password"
-            class="form-control"
-            id="floatingPassword"
-            placeholder="Password"
-            name="password"
-          />
-          <label for="floatingPassword">Password</label>
-        </div>
-        <button class="btn btn-primary w-100 py-2" type="submit">
-          Sign In
-        </button>
-      </main>
-    </form>
-
-    <!-- サインアップ -->
-    <form method="post" action="/signup">
-      <main class="form-signin w-100 m-auto">
-        <h2 th:text="${param.message_signup}">メッセージ</h2>
-        <h2 th:text="${param.error_signup}">エラーメッセージ</h2>
-        <h1 class="h3 mb-3 fw-normal">Please Sign Up</h1>
-        <div class="form-floating">
-          <input
-            type="email"
-            class="form-control"
-            id="floatingInput"
-            placeholder="name@example.com"
-            name="username"
-          />
-          <label for="floatingInput">Email address</label>
-        </div>
-        <div class="form-floating">
-          <input
-            type="password"
-            class="form-control"
-            id="floatingPassword"
-            placeholder="Password"
-            name="password"
-          />
-          <label for="floatingPassword">Password</label>
-        </div>
-        <button class="btn btn-primary w-100 py-2" type="submit">
-          Sign Up
-        </button>
-      </main>
-    </form>
-    
-    <!-- 右下ナイトモード部分描画 -->
     <div
       class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle"
     >
@@ -256,5 +191,70 @@
         </li>
       </ul>
     </div>
+
+    <main class="form-signin w-100 m-auto">
+
+      <!-- サインイン -->
+      <form method="post" action="/signin">
+        <h2 th:text="${param.error_signin}">エラーメッセージ</h2>
+        <h1 class="h3 mb-3 fw-normal">Sign In</h1>
+        <div class="form-floating">
+          <input
+            type="email"
+            class="form-control"
+            id="floatingInput"
+            placeholder="name@example.com"
+            name="username"
+          />
+          <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="password"
+            class="form-control"
+            id="floatingPassword"
+            placeholder="Password"
+            name="password"
+          />
+          <label for="floatingPassword">Password</label>
+        </div>
+        <p class="mt-3 mb-3 text-body-secondary"></p>
+        <button class="btn btn-primary w-100 py-3" type="submit">
+          Sign In
+        </button>
+      </form>
+
+      <p class="mt-3 mb-5 text-body-secondary"></p>
+
+      <!-- サインアップ -->
+      <form method="post" action="/signup">
+        <h2 th:text="${param.error_signup}">エラーメッセージ</h2>
+        <h3 class="h4 mb-3 fw-normal">Sign Up</h3>
+        <div class="form-floating">
+          <input
+            type="email"
+            class="form-control"
+            id="floatingInput"
+            placeholder="name@example.com"
+            name="username"
+          />
+          <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="password"
+            class="form-control"
+            id="floatingPassword"
+            placeholder="Password"
+            name="password"
+          />
+          <label for="floatingPassword">Password</label>
+        </div>
+        <p class="mt-3 mb-3 text-body-secondary"></p>
+        <button class="btn btn-secondary w-100 py-1" type="submit">
+          Sign Up
+        </button>
+      </form>
+    </main>
   </body>
 </html>
