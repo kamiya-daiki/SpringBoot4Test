@@ -1,5 +1,8 @@
 package com.portfolio.user;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+
 import com.portfolio.user.signin.SigninSuccessHandler;
 
 @Configuration
@@ -46,7 +50,10 @@ public class SecurityConfig {
             .formLogin(form -> form
                 .loginPage("/signin")                   // 画面表示
                 .loginProcessingUrl("/signin-process")  // 認証処理
-                .failureUrl("/index?message_error=failed_to_signin")
+                .failureHandler((request, response, exception) -> {
+                    response.sendRedirect("/index?error_signin=" + 
+                        URLEncoder.encode("failed_to_signin_re", StandardCharsets.UTF_8));
+                })
                 .successHandler(signinSuccessHandler)
                 .permitAll()
             )

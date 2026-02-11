@@ -1,4 +1,3 @@
-<!-- <!doctype html> -->
 <html data-bs-theme="auto" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8" />
@@ -7,7 +6,7 @@
     <title>Portfolio App</title>
   </head>
   <body class="d-flex align-items-center py-4 bg-body-tertiary">
-    <!-- →<h2 th:text="${message_error}">エラーメッセージ</h2>←<p>  -->
+    <h2 th:text="${param.error_signin}">エラーメッセージ</h2>
     <main class="form-signin w-100 m-auto">
       <form method="post" action="/signin-process">
         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
