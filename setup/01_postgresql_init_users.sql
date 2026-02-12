@@ -1,5 +1,5 @@
 CREATE TABLE users (
-    id          BIGSERIAL PRIMARY KEY,
+    user_id     BIGSERIAL PRIMARY KEY,
     email       VARCHAR(50) NOT NULL UNIQUE,
     password    VARCHAR(100) NOT NULL,  -- BCrypt でハッシュ化されたパスワード
     enabled     BOOLEAN DEFAULT TRUE,

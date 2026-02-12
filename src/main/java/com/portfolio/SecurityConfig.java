@@ -1,4 +1,4 @@
-package com.portfolio.user;
+package com.portfolio;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
