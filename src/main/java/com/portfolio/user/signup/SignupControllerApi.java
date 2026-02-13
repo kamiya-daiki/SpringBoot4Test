@@ -1,29 +1,30 @@
 package com.portfolio.user.signup;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
-public class SignupController {
+public class SignupControllerApi {
 
     private final SignupUserService signupUserService;
 
-    @PostMapping("/signup")
+    @PostMapping("/api/signup")
     public String signup(
             @RequestParam String username,
             @RequestParam String password
     ) {
         try
         {
-            System.out.println("SignupController: signup called start : username=" + username);
+            System.out.println("SignupControllerApi: signup called start : username=" + username);
             signupUserService.createUser(username, password);
-            System.out.println("SignupController: signup called end : username=" + username);
+            System.out.println("SignupControllerApi: signup called end : username=" + username);
         } 
         catch (Exception e) 
         {
+            System.out.println(e.getMessage());
             return "/index?error_signup=Error_creating_user";
         }
 

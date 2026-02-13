@@ -19,4 +19,11 @@ public interface UserRepository
         @Param("email") String email,
         @Param("dt") Instant dt
     );
+
+    @Modifying
+    @Query("UPDATE UserEntity u SET u.lastLoginDatetime = :dt WHERE u.email = :email")
+    int updateLastLoginDatetimeApi(
+        @Param("email") String email,
+        @Param("dt") Instant dt
+    );
 }

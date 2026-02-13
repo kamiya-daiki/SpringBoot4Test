@@ -19,7 +19,7 @@ public class UserService {
             .findByEmail(email)
             .orElseThrow(() -> new IllegalStateException("User not found"));
 
-        userRepository.deleteById(user.getId());
+        userRepository.deleteById(user.getUser_id());
     }
 
     @Transactional

@@ -13,9 +13,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 import com.portfolio.user.signin.SigninSuccessHandler;
+import lombok.RequiredArgsConstructor;
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class SecurityConfig {
     
     @Autowired
@@ -39,6 +41,7 @@ public class SecurityConfig {
                     "/index.html",
                     "/index.css",
                     "/signin",
+                    "/signin/api/**",
                     "/signup",
                     "/css/**",
                     "/js/**",
