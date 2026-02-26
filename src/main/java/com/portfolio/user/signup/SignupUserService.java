@@ -31,7 +31,7 @@ public class SignupUserService {
         System.out.println("SignupUserService: createUser called start : username=" + username);
         UserEntity user = new UserEntity();
         user.setEmail(username);
-        user.setPassword(passwordEncoder.encode(password));
+        user.setUser_password(passwordEncoder.encode(password));
         user.setCreateDatetime(Instant.now());
         user.setEnabled(true);
         
@@ -50,7 +50,7 @@ public class SignupUserService {
         System.out.println("SignupUserServiceApi: createUser called start : username=" + username);
         UserEntity user = new UserEntity();
         user.setEmail(username);
-        user.setPassword(passwordEncoder.encode(password));
+        user.setUser_password(passwordEncoder.encode(password));
         user.setCreateDatetime(Instant.now());
         user.setEnabled(true);
         

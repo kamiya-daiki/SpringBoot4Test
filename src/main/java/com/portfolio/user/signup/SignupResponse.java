@@ -26,7 +26,7 @@ public class SignupResponse {
         return SignupResponse.builder()
                 .user_id(entity.getUser_id())
                 .email(entity.getEmail())
-                .password(entity.getPassword())
+                .password(entity.getUser_password())
                 .build();
     }
 }

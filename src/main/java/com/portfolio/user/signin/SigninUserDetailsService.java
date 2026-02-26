@@ -41,7 +41,7 @@ public class SigninUserDetailsService implements UserDetailsService {
 
         return User.builder()
                 .username(user.getEmail())
-                .password(user.getPassword())
+                .password(user.getUser_password())
                 .roles("USER")
                 .build();
     }
