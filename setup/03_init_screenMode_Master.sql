@@ -3,9 +3,12 @@
 ------------------------------
 CREATE TABLE screen_mode_Master (
     -- 画面モードID
-    screen_mode_id             INTEGER PRIMARY KEY,
+    screen_mode_id             INTEGER,
     -- 画面モード名
-    screen_mode_name           VARCHAR(50) NOT NULL UNIQUE
+    screen_mode_name           VARCHAR(50) NOT NULL UNIQUE,
+
+    -- 主キー設定
+    PRIMARY KEY (screen_mode_id)
 );
 
 INSERT INTO screen_mode_Master (screen_mode_id, screen_mode_name)

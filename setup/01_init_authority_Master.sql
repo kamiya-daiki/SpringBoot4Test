@@ -3,9 +3,12 @@
 ------------------------------
 CREATE TABLE authority_Master (
     -- 権限ID
-    authority_id             INTEGER PRIMARY KEY,
+    authority_id             INTEGER,
     -- 権限名
-    authority_name           VARCHAR(50) NOT NULL UNIQUE
+    authority_name           VARCHAR(50) NOT NULL UNIQUE,
+
+    -- 主キー設定
+    PRIMARY KEY (authority_id)
 );
 
 -- 一般（ユーザー）権限

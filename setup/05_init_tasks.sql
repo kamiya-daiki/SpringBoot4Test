@@ -15,7 +15,7 @@ CREATE TABLE tasks (
     -- 終了日
     end_datetime        timestamp DEFAULT CURRENT_TIMESTAMP,
 
-    -- 外部参照キー設定
+    -- 外部キー設定
     user_id                  BIGSERIAL,
     user_id_history          BIGSERIAL,
     FOREIGN KEY (user_id, user_id_history) REFERENCES users (user_id, user_id_history),

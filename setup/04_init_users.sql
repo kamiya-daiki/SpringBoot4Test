@@ -7,9 +7,9 @@ CREATE TABLE users (
     -- ユーザーID履歴
     user_id_history         BIGSERIAL,
     -- メールアドレス
-    email       VARCHAR(50) NOT NULL,
+    email                   VARCHAR(50) NOT NULL,
     -- パスワード(BCryptでハッシュ化済)
-    user_password    VARCHAR(50) NOT NULL,
+    user_password           VARCHAR(50) NOT NULL,
     -- ユーザー作成日時
     create_datetime                 timestamp DEFAULT CURRENT_TIMESTAMP,
     -- 最終パスワード更新日時
@@ -21,7 +21,7 @@ CREATE TABLE users (
     -- 画面モード
     screen_mode   integer NOT NULL DEFAULT 0,
 
-    -- 外部参照キー設定
+    -- 外部キー設定
     FOREIGN KEY (authority) REFERENCES authority_Master(authority_id),
     FOREIGN KEY (screen_mode) REFERENCES screen_mode_Master(screen_mode_id),
 
