@@ -1,7 +1,7 @@
 ------------------------------
 -- 画面モードマスタテーブル
 ------------------------------
-CREATE TABLE screen_mode_Master (
+CREATE TABLE screen_mode_master (
     -- 画面モードID
     screen_mode_id             INTEGER,
     -- 画面モード名
@@ -11,18 +11,18 @@ CREATE TABLE screen_mode_Master (
     PRIMARY KEY (screen_mode_id)
 );
 
-INSERT INTO screen_mode_Master (screen_mode_id, screen_mode_name)
+INSERT INTO screen_mode_master (screen_mode_id, screen_mode_name)
 VALUES (
     0
-    , 'DEFAULT'
+    , 'AUTO'
 );
 
-INSERT INTO screen_mode_Master (screen_mode_id, screen_mode_name)
+INSERT INTO screen_mode_master (screen_mode_id, screen_mode_name)
 VALUES (
     1
     , 'RIGHT'
 );
-INSERT INTO screen_mode_Master (screen_mode_id, screen_mode_name)
+INSERT INTO screen_mode_master (screen_mode_id, screen_mode_name)
 VALUES (
     2
     , 'DARK'
