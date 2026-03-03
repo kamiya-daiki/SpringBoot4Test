@@ -1,10 +1,7 @@
 package com.portfolio.user.signup;
 
-import org.springframework.data.annotation.Id;
 import com.portfolio.user.UserEntity;
 import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import lombok.Builder;
 import lombok.Getter;
 

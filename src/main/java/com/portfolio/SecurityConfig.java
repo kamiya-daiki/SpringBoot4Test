@@ -42,7 +42,9 @@ public class SecurityConfig {
                     "/index.css",
                     "/signin",
                     "/signin/api/**",
+                    "/signin-action",
                     "/signup",
+                    "/signup-action",
                     "/css/**",
                     "/js/**",
                     "/bootstrap/**",
@@ -53,10 +55,10 @@ public class SecurityConfig {
             )
             // フォームログイン設定
             .formLogin(form -> form
-                .loginPage("/")                // 画面表示
-                .loginProcessingUrl("/signin")      // 認証処理
+                .loginPage("/")                         // 画面表示
+                .loginProcessingUrl("/signin-action")   // 認証処理
                 .failureHandler((request, response, exception) -> {
-                    response.sendRedirect("/index?error_signin=" + 
+                    response.sendRedirect("/signin-action?error_signin=" + 
                         URLEncoder.encode("failed_to_signin", StandardCharsets.UTF_8));
                 })
                 .successHandler(signinSuccessHandler)
