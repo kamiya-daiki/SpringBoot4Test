@@ -21,11 +21,8 @@ public class UserEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long user_id;
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long user_id_history;
+    @Column(nullable = false, unique = true, length = 50)
+    private String user_id;
 
     @Column(nullable = false, unique = true, length = 50)
     private String email;
@@ -39,6 +36,9 @@ public class UserEntity implements Serializable {
     @Column(name = "create_datetime")
     private Instant createDatetime;
 
+    @Column(name = "last_update_password_datetime")
+    private Instant lastUpdatePasswordDatetime;
+
     @Column(name = "last_login_datetime")
     private Instant lastLoginDatetime;
 
@@ -47,15 +47,4 @@ public class UserEntity implements Serializable {
 
     @Column(nullable = false)
     private int screen_mode;
-    
-    public int hashCode() {
-		int hashCode = 0;
-		if (user_id != null) {
-			hashCode ^= user_id.hashCode();
-		}
-		if (user_id_history != null) {
-			hashCode ^= user_id_history.hashCode();
-		}
-		return hashCode;
-	}
 }

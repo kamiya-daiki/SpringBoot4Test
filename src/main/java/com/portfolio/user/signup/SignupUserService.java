@@ -9,11 +9,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.portfolio.user.UserEntity;
 import com.portfolio.user.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Service
 public class SignupUserService {
 
     private final UserRepository userRepository;
+    private static final Logger log = LoggerFactory.getLogger(SignupUserService.class);
     
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -28,15 +31,20 @@ public class SignupUserService {
         @RequestParam String password
     ){
         
-        System.out.println("SignupUserService: createUser called start : username=" + username);
+        //System.out.println("SignupUserService: createUser called start : username=" + username);
+        log.info("SignupUserService: createUser called start : username=" + username);
         UserEntity user = new UserEntity();
+        user.setUser_id(username);
         user.setEmail(username);
         user.setUser_password(passwordEncoder.encode(password));
         user.setCreateDatetime(Instant.now());
         user.setEnabled(true);
+        user.setAuthority(0);
+        user.setScreen_mode(0);
         
         this.userRepository.save(user);
-        System.out.println("SignupUserService: createUser called end : username=" + username);
+        //System.out.println("SignupUserService: createUser called end : username=" + username);
+        log.info("SignupUserService: createUser called end : username=" + username);
 
         return ResponseEntity.ok("User created");
     }

@@ -12,9 +12,8 @@ import lombok.Getter;
 @Builder
 public class SignupResponse {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long user_id;
+    @Column(nullable = false, unique = true, length = 50)
+    private String user_id;
 
     @Column(nullable = false, unique = true, length = 50)
     private String email;
