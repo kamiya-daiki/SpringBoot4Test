@@ -13,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 import com.portfolio.user.signin.SigninSuccessHandler;
+import com.portfolio.user.;
 import lombok.RequiredArgsConstructor;
 
 @Configuration
@@ -76,6 +77,10 @@ public class SecurityConfig {
                 .deleteCookies("JSESSIONID")
                 .permitAll()
             );
+
+            http.addFilterBefore(
+                jwtFilter,
+                UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
