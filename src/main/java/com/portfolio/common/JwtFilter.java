@@ -1,3 +1,5 @@
+package com.portfolio.common;
+
 import java.io.IOException;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.stereotype.Component;

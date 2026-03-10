@@ -1,4 +1,4 @@
-package com.portfolio;
+package com.portfolio.common;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -8,24 +8,46 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.portfolio.user.signin.SigninSuccessHandler;
-import com.portfolio.user.;
 import lombok.RequiredArgsConstructor;
+//import lombok.ToString;
+import lombok.Value;
+
+import com.portfolio.common.JwtFilter;
+import com.portfolio.user.signin.SigninSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class SecurityConfig {
+
+    public SecurityConfig(SigninSuccessHandler signinSuccessHandler) {
+        this.signinSuccessHandler = signinSuccessHandler;
+    }
+
+    @Autowired
+    JwtFilter jwtFilter;
     
     @Autowired
     private SigninSuccessHandler signinSuccessHandler;
 
-    public SecurityConfig(SigninSuccessHandler signinSuccessHandler) {
-        this.signinSuccessHandler = signinSuccessHandler;
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(
+        AuthenticationConfiguration config) throws Exception {
+
+        return config.getAuthenticationManager();
     }
 
     @Bean
@@ -42,7 +64,7 @@ public class SecurityConfig {
                     "/index.html",
                     "/index.css",
                     "/signin",
-                    "/signin/api/**",
+                    "/api/signin/",
                     "/signin-action",
                     "/signup",
                     "/signup-action",
@@ -65,6 +87,9 @@ public class SecurityConfig {
                 .successHandler(signinSuccessHandler)
                 .permitAll()
             )
+            // Session無効化
+            // .sessionManagement(session ->
+            //     session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             // ログアウト設定
             .logout(logout -> logout
                 // ログアウト用エンドポイント
@@ -83,10 +108,5 @@ public class SecurityConfig {
                 UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
-    }
-
-    @Bean
-    PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
     }
 }
