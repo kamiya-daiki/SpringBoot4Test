@@ -20,21 +20,16 @@ import lombok.RequiredArgsConstructor;
 //import lombok.ToString;
 import lombok.Value;
 
-import com.portfolio.common.JwtFilter;
 import com.portfolio.user.signin.SigninSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
-//@RequiredArgsConstructor
-public class SecurityConfig {
+public class WebSecurityConfig {
 
-    public SecurityConfig(SigninSuccessHandler signinSuccessHandler) {
+    public WebSecurityConfig(SigninSuccessHandler signinSuccessHandler) {
         this.signinSuccessHandler = signinSuccessHandler;
     }
 
-    @Autowired
-    JwtFilter jwtFilter;
-    
     @Autowired
     private SigninSuccessHandler signinSuccessHandler;
 
@@ -64,7 +59,6 @@ public class SecurityConfig {
                     "/index.html",
                     "/index.css",
                     "/signin",
-                    "/api/signin/",
                     "/signin-action",
                     "/signup",
                     "/signup-action",
@@ -87,9 +81,6 @@ public class SecurityConfig {
                 .successHandler(signinSuccessHandler)
                 .permitAll()
             )
-            // Session無効化
-            // .sessionManagement(session ->
-            //     session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             // ログアウト設定
             .logout(logout -> logout
                 // ログアウト用エンドポイント
@@ -102,10 +93,6 @@ public class SecurityConfig {
                 .deleteCookies("JSESSIONID")
                 .permitAll()
             );
-
-            http.addFilterBefore(
-                jwtFilter,
-                UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
