@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.portfolio.common.LoginRequest;
 
@@ -19,21 +21,32 @@ import com.portfolio.common.LoginRequest;
 @RequestMapping("/api/auth")
 public class AuthController {
 
-    @Autowired
+    // @Autowired
+    // private final AuthenticationManager authenticationManager;
+
+    // @Autowired
+    // private final JwtUtil jwtUtil;
+
+    // @Autowired
+    // public AuthController(AuthenticationManager authenticationManager, JwtUtil jwtUtil) {
+    //     this.authenticationManager = authenticationManager;
+    //     this.jwtUtil = jwtUtil;
+    // }
+
     private final AuthenticationManager authenticationManager;
-
-    @Autowired
     private final JwtUtil jwtUtil;
+    private static final Logger log =
+        LoggerFactory.getLogger(AuthController.class);
 
-    @Autowired
     public AuthController(AuthenticationManager authenticationManager, JwtUtil jwtUtil) {
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
     }
 
-    @PostMapping("/api/signin/")
+    @PostMapping("/login")
     public Map<String,String> login(@RequestBody LoginRequest request) {
 
+        log.info("AuthController: start");
         Authentication auth =
                 authenticationManager.authenticate(
                         new UsernamePasswordAuthenticationToken(
@@ -43,6 +56,9 @@ public class AuthController {
                 );
 
         String token = jwtUtil.generateToken(request.getUsername());
+
+        log.info("Generated JWT: " + token);
+        log.info("AuthController: end");
 
         return Map.of("token", token);
     }
