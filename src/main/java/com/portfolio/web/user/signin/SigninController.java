@@ -1,4 +1,4 @@
-package com.portfolio.user.signin;
+package com.portfolio.web.user.signin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

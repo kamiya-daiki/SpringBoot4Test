@@ -1,4 +1,4 @@
-package com.portfolio.user.home;
+package com.portfolio.web.user.home;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;

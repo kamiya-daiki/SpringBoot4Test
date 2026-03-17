@@ -1,4 +1,4 @@
-package com.portfolio.common;
+package com.portfolio.api;
 
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;

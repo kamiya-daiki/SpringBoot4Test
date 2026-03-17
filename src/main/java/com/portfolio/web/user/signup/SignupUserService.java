@@ -1,4 +1,4 @@
-package com.portfolio.user.signup;
+package com.portfolio.web.user.signup;
 
 import java.time.Instant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,8 +7,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.portfolio.user.UserEntity;
-import com.portfolio.user.UserRepository;
+import com.portfolio.web.user.UserEntity;
+import com.portfolio.web.user.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

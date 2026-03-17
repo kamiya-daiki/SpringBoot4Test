@@ -1,4 +1,4 @@
-package com.portfolio.user.error;
+package com.portfolio.web.user.error;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

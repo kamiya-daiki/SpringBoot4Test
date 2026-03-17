@@ -1,4 +1,4 @@
-package com.portfolio.user.signup;
+package com.portfolio.web.user.signup;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;

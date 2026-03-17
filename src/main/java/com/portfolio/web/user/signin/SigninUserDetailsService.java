@@ -1,4 +1,4 @@
-package com.portfolio.user.signin;
+package com.portfolio.web.user.signin;
 import java.time.Instant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,8 +8,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import com.portfolio.user.UserRepository;
-import com.portfolio.user.UserEntity;
+import com.portfolio.web.user.UserEntity;
+import com.portfolio.web.user.UserRepository;
 
 @Service
 public class SigninUserDetailsService implements UserDetailsService {

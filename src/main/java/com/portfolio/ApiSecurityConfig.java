@@ -8,8 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import com.portfolio.common.JwtFilter;
-// import com.portfolio.user.signin.SigninSuccessHandler;
+import com.portfolio.api.JwtFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -17,13 +16,6 @@ public class ApiSecurityConfig {
 
     @Autowired
     JwtFilter jwtFilter;
-
-    // public ApiSecurityConfig(SigninSuccessHandler signinSuccessHandler) {
-    //     this.signinSuccessHandler = signinSuccessHandler;
-    // }
-
-    // @Autowired
-    // private SigninSuccessHandler signinSuccessHandler;
 
     @Bean
     SecurityFilterChain apiSecurity(HttpSecurity http) throws Exception {
@@ -38,7 +30,7 @@ public class ApiSecurityConfig {
             .sessionManagement(session ->
                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/login").permitAll()
+                .requestMatchers("/api/signin").permitAll()
                 .anyRequest().authenticated());
 
         return http.build();

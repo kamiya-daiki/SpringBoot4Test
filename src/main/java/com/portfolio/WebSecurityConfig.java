@@ -12,7 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import com.portfolio.user.signin.SigninSuccessHandler;
+import com.portfolio.web.user.signin.SigninSuccessHandler;
 
 @Configuration
 @EnableWebSecurity

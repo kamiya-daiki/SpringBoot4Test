@@ -1,4 +1,4 @@
-package com.portfolio.common;
+package com.portfolio.api;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
