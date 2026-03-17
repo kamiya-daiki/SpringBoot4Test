@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Spring Security Example</title>
+    </head>
+    <body>
+        ようこそ<h2 th:text="${email}">ユーザー名</h2>さん！
+    </body>
+
+    </p>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">ログアウト</button>
+        </form>
+    </p>
+    
+    </p>
+        <form th:action="@{/delete}" method="post">
+            <button type="submit">アカウント削除</button>
+        </form> 
+    </p>
+</html>
