@@ -4,7 +4,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
-import com.portfolio.web.user.UserService;
+import com.portfolio.common.user.UserService;
 
 @Controller
 public class DeletUserController {

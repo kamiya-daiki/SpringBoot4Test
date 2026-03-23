@@ -8,8 +8,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import com.portfolio.web.user.UserEntity;
-import com.portfolio.web.user.UserRepository;
+import com.portfolio.common.user.UserEntity;
+import com.portfolio.common.user.UserRepository;
 
 @Service
 public class SigninUserDetailsService implements UserDetailsService {
