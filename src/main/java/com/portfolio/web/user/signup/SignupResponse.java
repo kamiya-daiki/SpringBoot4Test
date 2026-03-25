@@ -1,6 +1,6 @@
 package com.portfolio.web.user.signup;
 
-import com.portfolio.web.user.UserEntity;
+import com.portfolio.common.user.UserEntity;
 import jakarta.persistence.Column;
 import lombok.Builder;
 import lombok.Getter;

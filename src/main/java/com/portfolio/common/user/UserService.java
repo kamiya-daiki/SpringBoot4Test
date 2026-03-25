@@ -1,4 +1,4 @@
-package com.portfolio.web.user;
+package com.portfolio.common.user;
 
 import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;

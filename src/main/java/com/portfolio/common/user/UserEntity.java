@@ -1,4 +1,4 @@
-package com.portfolio.web.user;
+package com.portfolio.common.user;
 
 import java.io.Serializable;
 import java.time.Instant;

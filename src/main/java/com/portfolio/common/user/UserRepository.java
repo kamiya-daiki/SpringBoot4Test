@@ -1,4 +1,4 @@
-package com.portfolio.web.user;
+package com.portfolio.common.user;
 
 import java.time.Instant;
 import java.util.Optional;
