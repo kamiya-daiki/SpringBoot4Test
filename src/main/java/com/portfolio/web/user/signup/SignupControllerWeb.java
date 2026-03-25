@@ -1,19 +1,21 @@
 package com.portfolio.web.user.signup;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import com.portfolio.common.signup.SignupUserService;
 
 @Controller
 @RequiredArgsConstructor
-public class SignupController {
+public class SignupControllerWeb {
 
     private final SignupUserService signupUserService;
     private static final Logger log =
-        LoggerFactory.getLogger(SignupController.class);
+        LoggerFactory.getLogger(SignupControllerWeb.class);
 
     @PostMapping("/signup-action")
     public String signup(

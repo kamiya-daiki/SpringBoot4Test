@@ -1,4 +1,4 @@
-package com.portfolio.web.user.signup;
+package com.portfolio.common.signup;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -9,22 +9,22 @@ import org.slf4j.LoggerFactory;
 
 @RestController
 @RequiredArgsConstructor
-public class SignupControllerApi {
+public class SignupController {
 
-    private final SignupUserService signupUserService;
+    public final SignupUserService signupUserService;
     private static final Logger log =
-        LoggerFactory.getLogger(SignupControllerApi.class);
+        LoggerFactory.getLogger(SignupController.class);
 
-    @PostMapping("/api/signup-action")
+    @PostMapping("/api/signup")
     public String signup(
             @RequestParam String username,
             @RequestParam String password
     ) {
         try
         {
-            log.info("SignupControllerApi: signup called start : username=" + username);
+            log.info("SignupController: signup called start : username=" + username);
             signupUserService.createUser(username, password);
-            log.info("SignupControllerApi: signup called end : username=" + username);
+            log.info("SignupController: signup called end : username=" + username);
         } 
         catch (Exception e) 
         {

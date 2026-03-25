@@ -30,7 +30,13 @@ public class ApiSecurityConfig {
             .sessionManagement(session ->
                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/signin").permitAll()
+                // 認可が不要なページ
+                .requestMatchers(
+                    "/api/signin",
+                    "/api/signup",
+                    "/api/signup-action"
+                ).permitAll()
+                // その他のページは全て認可が必要
                 .anyRequest().authenticated());
 
         return http.build();
