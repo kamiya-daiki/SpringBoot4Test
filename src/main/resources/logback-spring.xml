@@ -1,0 +1,17 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- ファイルロックを避けるため、通常はfalseにする -->
+        <prudent>false</prudent> 
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- ログファイル名 -->
+            <fileNamePattern>logs/app_%d{yyyy-MM-dd_HH-mm-ss}.log</fileNamePattern>
+            <!-- 過去のログを保存する日数 -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <!-- <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder> -->
+    </appender>
+</configuration>

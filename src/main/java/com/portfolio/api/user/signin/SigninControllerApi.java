@@ -15,14 +15,14 @@ import com.portfolio.common.LoginRequest;
 
 @RestController
 @RequestMapping("/api")
-public class ApiSigninController {
+public class SigninControllerApi {
 
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
     private static final Logger log =
-        LoggerFactory.getLogger(ApiSigninController.class);
+        LoggerFactory.getLogger(SigninControllerApi.class);
 
-    public ApiSigninController(AuthenticationManager authenticationManager, JwtUtil jwtUtil) {
+    public SigninControllerApi(AuthenticationManager authenticationManager, JwtUtil jwtUtil) {
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
     }
